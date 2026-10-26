@@ -1,0 +1,8 @@
+go 1.27.1
+
+use (
+	./src/app_server
+	./src/config
+	./src/kafka_server
+	./src/smtp_server
+)
