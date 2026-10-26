@@ -4,7 +4,7 @@ import (
 	gocql "github.com/apache/cassandra-gocql-driver/v2"
 	"github.com/gin-gonic/gin"
 
-	emailmodule "email_server/app_server/internal/modules/email"
+	emailmodule "github.com/sujithsss01/email_server/app_server/internal/modules/email"
 )
 
 type Module interface {

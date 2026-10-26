@@ -1,4 +1,4 @@
-module email_server/kafka_server
+module github.com/sujithsss01/email_server/kafka_server
 
 go 1.27.1
 

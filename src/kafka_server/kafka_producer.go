@@ -1,7 +1,7 @@
 package kafkaserver
 
 import (
-	"email_server/config"
+	"github.com/sujithsss01/email_server/config"
 	"errors"
 	"log"
 	"sync"

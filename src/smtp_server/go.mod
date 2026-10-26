@@ -1,4 +1,4 @@
-module email_server/smtp_server
+module github.com/sujithsss01/email_server/smtp_server
 
 go 1.27.1
 

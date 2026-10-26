@@ -2,7 +2,7 @@ package kafkaserver
 
 import (
 	"context"
-	"email_server/config"
+	"github.com/sujithsss01/email_server/config"
 	"log"
 	"time"
 

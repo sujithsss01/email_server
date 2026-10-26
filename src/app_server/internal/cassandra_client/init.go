@@ -1,7 +1,7 @@
 package cassandraclient
 
 import (
-	"email_server/config"
+	"github.com/sujithsss01/email_server/config"
 
 	gocql "github.com/apache/cassandra-gocql-driver/v2"
 )

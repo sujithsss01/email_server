@@ -1,4 +1,4 @@
-module email_server/config
+module github.com/sujithsss01/email_server/config
 
 go 1.27.1
 

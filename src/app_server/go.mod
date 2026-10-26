@@ -1,4 +1,4 @@
-module email_server/app_server
+module github.com/sujithsss01/email_server/app_server
 
 go 1.27.1
 

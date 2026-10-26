@@ -1,9 +1,9 @@
 package main
 
 import (
-	"email_server/app_server/internal"
-	cassandraclient "email_server/app_server/internal/cassandra_client"
-	kafkaserver "email_server/kafka_server"
+	"github.com/sujithsss01/email_server/app_server/internal"
+	cassandraclient "github.com/sujithsss01/email_server/app_server/internal/cassandra_client"
+	kafkaserver "github.com/sujithsss01/email_server/kafka_server"
 
 	gocql "github.com/apache/cassandra-gocql-driver/v2"
 	"github.com/gin-gonic/gin"

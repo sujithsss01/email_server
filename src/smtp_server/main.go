@@ -6,7 +6,7 @@ import (
 	"net/mail"
 	"time"
 
-	"email_server/kafka_server"
+	"github.com/sujithsss01/email_server/kafka_server"
 	"github.com/emersion/go-smtp"
 )
 

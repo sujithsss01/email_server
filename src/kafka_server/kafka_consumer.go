@@ -6,7 +6,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"email_server/config"
+	"github.com/sujithsss01/email_server/config"
 	"github.com/confluentinc/confluent-kafka-go/v2/kafka"
 )
 

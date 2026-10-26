@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"log"
 
-	"email_server/kafka_server"
-	"email_server/smtp_server/dto"
+	"github.com/sujithsss01/email_server/kafka_server"
+	"github.com/sujithsss01/email_server/smtp_server/dto"
 )
 
 func processEmail(producer *kafkaserver.KafkaProducer, to, from, subject, message string) error {
