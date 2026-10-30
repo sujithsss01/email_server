@@ -1,8 +1,8 @@
 package emailmodule
 
 import (
-	gocql "github.com/apache/cassandra-gocql-driver/v2"
 	"github.com/gin-gonic/gin"
+	"github.com/gocql/gocql"
 )
 
 type EmailModule struct {

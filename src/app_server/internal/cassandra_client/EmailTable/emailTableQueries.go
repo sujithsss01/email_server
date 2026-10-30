@@ -3,7 +3,7 @@ package emailtablequeries
 import (
 	"time"
 
-	gocql "github.com/apache/cassandra-gocql-driver/v2"
+	"github.com/gocql/gocql"
 )
 
 func SaveEmail(
@@ -14,7 +14,7 @@ func SaveEmail(
 	created_at time.Time,
 	content string,
 ) error {
-	batch := session.Batch(gocql.LoggedBatch)
+	batch := session.NewBatch(gocql.LoggedBatch)
 	batch.Query(`
 		INSERT INTO email_by_id
 			(user_id, email_id, email_type, created_at, content)
@@ -25,6 +25,6 @@ func SaveEmail(
 			(user_id, email_id, email_type, created_at, content)
 		VALUES ( ?, ?, ?, ?, ? )
 	`, user_id, email_id, email_type, created_at, content)
-	return batch.Exec()
+	return session.ExecuteBatch(batch)
 
 }

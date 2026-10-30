@@ -6,8 +6,9 @@ import (
 	"net/mail"
 	"time"
 
-	"github.com/sujithsss01/email_server/kafka_server"
 	"github.com/emersion/go-smtp"
+	"github.com/sujithsss01/email_server/config"
+	"github.com/sujithsss01/email_server/kafka_server"
 )
 
 type Backend struct {
@@ -59,14 +60,15 @@ func (s *Session) Logout() error {
 	return nil
 }
 func main() {
+	cf := config.GetConfig()
 	producer, _ := kafkaserver.NewKafkaProducer(kafkaserver.IncommingEmailsTopic)
 	defer producer.Close()
 	be := &Backend{
 		producer: producer,
 	}
 	server := smtp.NewServer(be)
-	server.Addr = "localhost:1025"
-	server.Domain = "localhost"
+	server.Addr = cf.SMTPConfig.Url
+	server.Domain = cf.SMTPConfig.Domain
 	server.WriteTimeout = 10 * time.Second
 	server.ReadTimeout = 10 * time.Second
 	server.MaxMessageBytes = 1024 * 1024

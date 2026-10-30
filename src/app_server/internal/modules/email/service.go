@@ -1,6 +1,6 @@
 package emailmodule
 
-import gocql "github.com/apache/cassandra-gocql-driver/v2"
+import "github.com/gocql/gocql"
 
 type emailService struct {
 	session *gocql.Session

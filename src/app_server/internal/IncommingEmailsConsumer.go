@@ -1,15 +1,15 @@
 package internal
 
 import (
-	emailtablequeries "github.com/sujithsss01/email_server/app_server/internal/cassandra_client/EmailTable"
-	kafkaserver "github.com/sujithsss01/email_server/kafka_server"
 	"encoding/json"
+	emailtablequeries "github.com/sujithsss01/email_server/app_server/internal/cassandra_client/emailTable"
+	kafkaserver "github.com/sujithsss01/email_server/kafka_server"
 	"log"
 
 	emaildto "github.com/sujithsss01/email_server/smtp_server/dto"
 
-	gocql "github.com/apache/cassandra-gocql-driver/v2"
 	"github.com/confluentinc/confluent-kafka-go/v2/kafka"
+	"github.com/gocql/gocql"
 	"github.com/google/uuid"
 )
 
