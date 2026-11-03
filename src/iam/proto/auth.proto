@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package iam.v1;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/sujithsss01/email_server/src/iam/internal/pb;iampb";
+
+service AuthService {
+  rpc GetRefreshToken(GetRefreshTokenRequest) returns (GetRefreshTokenResponse);
+  rpc RotateRefreshToken(RotateRefreshTokenRequest) returns (RotateRefreshTokenResponse);
+  rpc GetAuthToken(GetAuthTokenRequest) returns (GetAuthTokenResponse);
+  rpc LogoutSession(LogoutSessionRequest) returns (google.protobuf.Empty);
+  rpc LogoutAllSession(LogoutAllSessionRequest) returns (google.protobuf.Empty);
+}
+
+message GetRefreshTokenRequest {
+  string username = 1 [(buf.validate.field).string.min_len = 1];
+  string password = 6 [
+    (buf.validate.field).string.min_len = 8,
+    (buf.validate.field).string.max_bytes = 72
+  ];
+}
+
+message GetRefreshTokenResponse {
+  string refresh_token = 1 [(buf.validate.field).string.min_len = 1];
+  string session_id = 2 [(buf.validate.field).string.min_len = 1];
+}
+
+message RotateRefreshTokenRequest {
+  string refresh_token = 1 [(buf.validate.field).string.min_len = 1];
+  string session_id = 2 [(buf.validate.field).string.min_len = 1];
+}
+
+message RotateRefreshTokenResponse {
+  string refresh_token = 1 [(buf.validate.field).string.min_len = 1];
+  string session_id = 2 [(buf.validate.field).string.min_len = 1];
+}
+
+message GetAuthTokenRequest {
+  string refresh_token = 1 [(buf.validate.field).string.min_len = 1];
+  string user_id = 2 [(buf.validate.field).string.min_len = 1];
+}
+
+message GetAuthTokenResponse {
+  string auth_token = 1 [(buf.validate.field).string.min_len = 1];
+}
+
+message LogoutSessionRequest {
+  string jwt_token = 1 [(buf.validate.field).string.min_len = 1];
+}
+
+message LogoutAllSessionRequest {
+  string jwt_token = 1 [(buf.validate.field).string.min_len = 1];
+}
