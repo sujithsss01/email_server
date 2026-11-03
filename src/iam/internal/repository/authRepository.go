@@ -23,7 +23,7 @@ func (r *AuthRepository) GetUserPassHash(
 	ctx context.Context,
 	username string,
 ) (*GetUserPassHashResponse, error) {
-	var res GetUserPassHashResponse
+	res := &GetUserPassHashResponse{}
 	err := r.db.WithContext(ctx).
 		Table("auth a").
 		Select("u.id, a.pass_hash").
@@ -40,7 +40,7 @@ func (r *AuthRepository) GetUserPassHash(
 	if res.PassHash == nil {
 		return nil, apperrors.ErrPasswordNotFound
 	}
-	return &res, nil
+	return res, nil
 }
 
 func NewAuthRepository(db *gorm.DB) *AuthRepository {

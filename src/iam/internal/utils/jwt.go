@@ -44,6 +44,7 @@ func GenerateJWT(userId string, sessionId string) (string, error) {
 	once.Do(loadPrivateAndPublicKey)
 	now := time.Now()
 	claims := AccessClaims{
+		SessionId: sessionId,
 		RegisteredClaims: jwt.RegisteredClaims{
 			Subject:   userId,
 			Issuer:    "iam-service",

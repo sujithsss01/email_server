@@ -32,6 +32,9 @@ func (s *AuthService) GetRefreshToken(ctx context.Context, request *iampb.GetRef
 	}
 	hashedRefreshToken := utils.HashRefreshToken(refreshToken)
 	sessionId, err := s.sessionRepository.StoreRefreshToken(ctx, res.UserId, nil, hashedRefreshToken)
+	if err != nil {
+		return nil, err
+	}
 	return &iampb.GetRefreshTokenResponse{
 		RefreshToken: refreshToken,
 		SessionId:    sessionId,
@@ -47,8 +50,9 @@ func (s *AuthService) RotateRefreshToken(ctx context.Context, request *iampb.Rot
 	if err != nil {
 		return nil, err
 	}
-	hashedRefreshToken := utils.HashRefreshToken(newRefreshToken)
-	err = s.sessionRepository.RotateRefreshToken(ctx, sessionId, request.RefreshToken, hashedRefreshToken)
+	hashedNewRefreshToken := utils.HashRefreshToken(newRefreshToken)
+	hashedOldRefreshToken := utils.HashRefreshToken(request.RefreshToken)
+	err = s.sessionRepository.RotateRefreshToken(ctx, sessionId, hashedOldRefreshToken, hashedNewRefreshToken)
 	if err != nil {
 		return nil, err
 	}
